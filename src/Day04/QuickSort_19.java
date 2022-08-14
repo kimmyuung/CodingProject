@@ -36,7 +36,7 @@ public class QuickSort_19 {
         int N = Integer.parseInt(st.nextToken()); // 숫자의 갯수
         int K = Integer.parseInt(st.nextToken()); // K번째 수
         st = new StringTokenizer(in.readLine());
-        int[] A = new int[N];
+        int[] A = new int[N]; // 숫자 데이터 저장 배열
         for(int i = 0; i < N; i++) { // N만큼 반복
             A[i] = Integer.parseInt(st.nextToken()); // A배열 저장
         }
