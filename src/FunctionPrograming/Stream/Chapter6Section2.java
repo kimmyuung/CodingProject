@@ -43,6 +43,12 @@ public class Chapter6Section2 {
                 .collect(Collectors.toList());
         System.out.println(verifiedusers);
 
+        // Stream<User> userStream = users.stream();
+        // Stream<String> userEmailStream = userStream.map(User::getEmailAddress);
+        // List<String> userEmailList = userEmailStream.collect(Collectors.toList());
+
+        List<String> emailAddress= users.stream().map(User::getEmailAddress).collect(Collectors.toList());
+
 
         List<User> unverifiedusers = users.stream()
                 .filter(user -> !user.isVerified())
@@ -51,25 +57,35 @@ public class Chapter6Section2 {
 
         Order order1 = new Order()
                 .setId(101)
-                .setStatus(Order.OrderStatus.CREATED);
+                .setStatus(Order.OrderStatus.CREATED)
+                .setCreatedBuUserId(101);
 
         Order order2 = new Order()
                 .setId(101)
-                .setStatus(Order.OrderStatus.ERROR);
+                .setStatus(Order.OrderStatus.ERROR)
+                .setCreatedBuUserId(102);
 
         Order order3 = new Order()
                 .setId(101)
-                .setStatus(Order.OrderStatus.PROCESSED);
+                .setStatus(Order.OrderStatus.PROCESSED)
+                .setCreatedBuUserId(103);
 
         Order order4 = new Order()
                 .setId(101)
-                .setStatus(Order.OrderStatus.IN_PROGRESS);
+                .setStatus(Order.OrderStatus.IN_PROGRESS)
+                .setCreatedBuUserId(104);
 
         Order order5 = new Order()
                 .setId(101)
-                .setStatus(Order.OrderStatus.ERROR);
+                .setStatus(Order.OrderStatus.ERROR)
+                .setCreatedBuUserId(105);
+
 
         List<Order> orders = Arrays.asList(order1, order2, order3, order4, order5);
+
+        List<Long> CreateOrderIds = orders.stream()
+                .map(Order::getCreatedBuUserId)
+                .collect(Collectors.toList());
 
         List<Order> Errororder = orders.stream()
                 .filter(order -> order.getStatus() == Order.OrderStatus.ERROR)
