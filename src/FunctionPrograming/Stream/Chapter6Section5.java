@@ -1,17 +1,17 @@
 package FunctionPrograming.Stream;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Chapter6Section4 {
-    // Stream의 구성요소
-    // 1. Source : 컬렉션, 배열 등
-    // 2. Intermediate Operations : 0개 이상의 filter, map 등의 중간처리
-    // 3. Terminal Operation : Collect, reduce 등
+public class Chapter6Section5 {
     public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(3, -5, 7, 4);
+        List<Integer> sortednumbers = numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
         User user1 = new User()
                 .setId(101)
                 .setName("Alice")
@@ -31,16 +31,10 @@ public class Chapter6Section4 {
                 .setEmailAddress("Charile@naver.com");
 
         List<User> users = Arrays.asList(user1, user2, user3);
-        List<String> emails = new ArrayList<>();
-        for(User user : users) {
-            if(user.isVerified()) {
-                emails.add(user.getEmailAddress());
-            }
-        }
-        List<String> emails2 = users.stream()
-                .filter(user -> ! user.isVerified())
-                .map(User::getEmailAddress)
+        List<User> sortedUsers = users.stream()
+                .sorted((u1, u2) -> u1.getName().compareTo(u2.getName()))
                 .collect(Collectors.toList());
+        System.out.println(sortedUsers);
 
 
         Order order1 = new Order()
@@ -76,16 +70,9 @@ public class Chapter6Section4 {
 
         List<Order> orders = Arrays.asList(order1, order2, order3, order4, order5);
 
-        List<Long> userIds = orders.stream()
-                .filter(order -> order.getStatus() == Order.OrderStatus.ERROR)
-                .map(Order::getCreatedBuUserId)
+        List<Order> sortedOrders = orders.stream().sorted((o1, o2) -> o1.getCreadtdAt().compareTo(o2.getCreadtdAt()))
                 .collect(Collectors.toList());
-
-        List<Order> ordersInErrorStatus = orders.stream()
-                .filter(order -> order.getStatus() == Order.OrderStatus.ERROR )
-                .filter(order -> order.getCreadtdAt().isAfter(LocalDateTime.now().minusHours(24)))
-                .collect(Collectors.toList());
-
+        System.out.println(sortedOrders);
 
     }
 }
