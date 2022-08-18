@@ -58,33 +58,33 @@ public class Chapter6Section2 {
         Order order1 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.CREATED)
-                .setCreatedBuUserId(101);
+                .setCreatedByUserId(101);
 
         Order order2 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.ERROR)
-                .setCreatedBuUserId(102);
+                .setCreatedByUserId(102);
 
         Order order3 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.PROCESSED)
-                .setCreatedBuUserId(103);
+                .setCreatedByUserId(103);
 
         Order order4 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.IN_PROGRESS)
-                .setCreatedBuUserId(104);
+                .setCreatedByUserId(104);
 
         Order order5 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.ERROR)
-                .setCreatedBuUserId(105);
+                .setCreatedByUserId(105);
 
 
         List<Order> orders = Arrays.asList(order1, order2, order3, order4, order5);
 
         List<Long> CreateOrderIds = orders.stream()
-                .map(Order::getCreatedBuUserId)
+                .map(Order::getCreatedByUserId)
                 .collect(Collectors.toList());
 
         List<Order> Errororder = orders.stream()

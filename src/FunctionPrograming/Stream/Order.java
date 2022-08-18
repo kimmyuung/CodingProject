@@ -6,22 +6,17 @@ import java.util.List;
 
 public class Order {
     private long id;
-    private LocalDateTime creadtdAt;
-    private long createdBuUserId;
+    private LocalDateTime createdAt;
+    private long createdByUserId;
     private OrderStatus status;
-    private BigDecimal amount; // 큰 숫자 무리없이 다룰수 있게 함
-    private List<OrderLine> orderLine;
+    private BigDecimal amount;
+    private List<OrderLine> orderLines;
 
     public enum OrderStatus {
         CREATED,
         IN_PROGRESS,
         ERROR,
         PROCESSED
-    }
-
-    public enum OrderLine{
-        PURCHASE,
-        DISCOUNT
     }
 
     public long getId() {
@@ -33,21 +28,21 @@ public class Order {
         return this;
     }
 
-    public LocalDateTime getCreadtdAt() {
-        return creadtdAt;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public Order setCreadtdAt(LocalDateTime creadtdAt) {
-        this.creadtdAt = creadtdAt;
+    public Order setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
         return this;
     }
 
-    public long getCreatedBuUserId() {
-        return createdBuUserId;
+    public long getCreatedByUserId() {
+        return createdByUserId;
     }
 
-    public Order setCreatedBuUserId(long createdBuUserId) {
-        this.createdBuUserId = createdBuUserId;
+    public Order setCreatedByUserId(long createdByUserId) {
+        this.createdByUserId = createdByUserId;
         return this;
     }
 
@@ -69,26 +64,20 @@ public class Order {
         return this;
     }
 
-    public List<OrderLine> getOrderLine() {
-        return orderLine;
+    public List<OrderLine> getOrderLines() {
+        return orderLines;
     }
 
-    public Order setOrderLine(List<OrderLine> orderLine) {
-        this.orderLine = orderLine;
+    public Order setOrderLines(List<OrderLine> orderLines) {
+        this.orderLines = orderLines;
         return this;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", creadtdAt=" + creadtdAt +
-                ", createdBuUserId=" + createdBuUserId +
-                ", status=" + status +
-                ", amount=" + amount +
-                ", orderLine=" + orderLine +
-                '}';
+        return "Order [id=" + id + ", " + (createdAt != null ? "createdAt=" + createdAt + ", " : "")
+                + "createdByUserId=" + createdByUserId + ", " + (status != null ? "status=" + status + ", " : "")
+                + (amount != null ? "amount=" + amount + ", " : "")
+                + (orderLines != null ? "orderLines=" + orderLines : "") + "]";
     }
-
-
 }

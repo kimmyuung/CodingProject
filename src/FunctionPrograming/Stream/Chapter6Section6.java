@@ -14,37 +14,37 @@ public class Chapter6Section6 {
         Order order1 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.CREATED)
-                .setCreatedBuUserId(101)
-                .setCreadtdAt(LocalDateTime.now().minusHours(4));
+                .setCreatedByUserId(101)
+                .setCreatedAt(LocalDateTime.now().minusHours(4));
 
         Order order2 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.ERROR)
-                .setCreatedBuUserId(102)
-                .setCreadtdAt(LocalDateTime.now().minusHours(10));
+                .setCreatedByUserId(102)
+                .setCreatedAt(LocalDateTime.now().minusHours(10));
 
         Order order3 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.PROCESSED)
-                .setCreatedBuUserId(103)
-                .setCreadtdAt(LocalDateTime.now().minusHours(36));
+                .setCreatedByUserId(103)
+                .setCreatedAt(LocalDateTime.now().minusHours(36));
 
         Order order4 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.IN_PROGRESS)
-                .setCreatedBuUserId(104)
-                .setCreadtdAt(LocalDateTime.now().minusHours(15));
+                .setCreatedByUserId(104)
+                .setCreatedAt(LocalDateTime.now().minusHours(15));
 
         Order order5 = new Order()
                 .setId(101)
                 .setStatus(Order.OrderStatus.ERROR)
-                .setCreatedBuUserId(105)
-                .setCreadtdAt(LocalDateTime.now().minusHours(10));
+                .setCreatedByUserId(105)
+                .setCreatedAt(LocalDateTime.now().minusHours(10));
 
 
         List<Order> orders = Arrays.asList(order1, order2, order3, order4, order5);
         List<Long> userIds =orders.stream()
-                .map(Order::getCreatedBuUserId)
+                .map(Order::getCreatedByUserId)
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
