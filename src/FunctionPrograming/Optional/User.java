@@ -1,5 +1,6 @@
 package FunctionPrograming.Optional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,8 @@ public class User {
     private String emailAddress;
     private boolean isVerified;
     private List<Integer> friendUserIds;
+
+    private LocalDateTime createdAt;
 
     public int getId() {
         return id;
@@ -57,8 +60,22 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", " + (name != null ? "name=" + name + ", " : "")
-                + (emailAddress != null ? "emailAddress=" + emailAddress + ", " : "") + "isVerified=" + isVerified
-                + ", " + (friendUserIds != null ? "friendUserIds=" + friendUserIds : "") + "]";
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", isVerified=" + isVerified +
+                ", friendUserIds=" + friendUserIds +
+                ", createdAt=" + createdAt +
+                '}';
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public User setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
     }
 }
